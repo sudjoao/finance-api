@@ -15,5 +15,5 @@ datasource db {
 
 model User {
   id      Int      @id @default(autoincrement())
-  phone   String   @unique
+  email   string   @unique
 }
