@@ -1,4 +1,6 @@
 export type User = {
-    id: Number,
-    phone: String
+    id: number,
+    email: string
 }
+
+export type CreateUserDto = Omit<User, 'id'>;
