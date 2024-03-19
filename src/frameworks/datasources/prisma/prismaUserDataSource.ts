@@ -10,6 +10,7 @@ export class PrismaUserDataSource implements UserRepository {
             const newUser = await prisma.user.create({
                 data: {
                     email: user.email,
+                    password: user.password
                 }
             })
             await prisma.$disconnect();

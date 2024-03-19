@@ -1,6 +1,7 @@
 import { User } from "@prisma/client";
 import { UserRepository } from "../../../application/repositories/userRepository";
 import { CreateUserDto } from "../../entities/User";
+import { PasswordEncryptor } from "../../../frameworks/config/passwordEncryptor";
 
 export class CreateUserUseCase {
     constructor(private userRepository: UserRepository) {}
@@ -10,6 +11,8 @@ export class CreateUserUseCase {
         if (oldUser) {
             throw new Error('User already exists');
         }
+        const encryptedPassword = await PasswordEncryptor.encryptPassword(user.password);
+        user.password = encryptedPassword;
         return this.userRepository.create(user);
     }
 }
