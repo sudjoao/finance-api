@@ -35,4 +35,5 @@ model Finance {
   categoryId Int
   name       String
   value      Float
+  createdAt DateTime
 }
